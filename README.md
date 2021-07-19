@@ -7,15 +7,15 @@ Script to add as alias for cleaning up local branches. It is customizable if use
 ### Clone repository
   - Clone repository
   - Open .zsh or .bash_profile or other.
-  - Add `alias remove-git-branch=[PATH_TO_REPOSITORY_FILE]/remove-git-branch.sh`
+  - Add `alias remove-git-branch=[ABSOLUTE_PATH_TO_REPOSITORY]/remove-git-branch.sh`
   - Restart terminal
 
 
 ### Copy Script
 - Create file `remove-git-branch.sh`
-- chmod +x [ABSOLUTE_PATH_WHERE_IS_CREATED]/remove-git-branch.sh
+- chmod +x [ABSOLUTE_PATH_TO_THE_FILE]/remove-git-branch.sh
 - Open .zsh or .bash_profile or other.
-- Add alias=[ABSOLUTE_PATH_WHERE_IS_CREATED]/remove-git-branch.sh
+- Add alias=[ABSOLUTE_PATH_TO_THE_FILE]/remove-git-branch.sh
 - Restart terminal
 
 
@@ -35,19 +35,19 @@ Branches that are always excluded from deleting are  **master**, **main**, and *
 ### Branch (-b | --branch) example
 Remove `branch1` and `branch2`
 ```zsh
-$ remove-git-branch --branch=branch1,branch2
+remove-git-branch --branch=branch1,branch2
 ```
 
 ### Pattern (-p | --pattern)  example
 Removes all branch names that start with `bug/`.
 ```zsh
-$ remove-git-branch --pattern="^bug/*"
+remove-git-branch --pattern="^bug/*"
 ```
 
 ### All (-a | --all) example
 Remove all branch names.
 ```zsh
-$ remove-git-branch --all
+remove-git-branch --all
 ```
 
 ### Exclude (-e | --exclude) example
@@ -56,7 +56,7 @@ Remove all branch names, but additional exclude **`branch1`**.
 Good use case is with `--all` flag, and exclude one or two branches.
 
 ```zsh
-$ remove-git-branch --exclude=branch1 --all
+remove-git-branch --exclude=branch1 --all
 ```
 
 ### Check (-c | --check) example
@@ -64,7 +64,7 @@ Before running a script for clean up, use check flag to see what branches are go
 
 
 ```zsh
-$ remove-git-branch --exclude=branch1 --all --check
+remove-git-branch --exclude=branch1 --all --check
 ```
 
 ## License
