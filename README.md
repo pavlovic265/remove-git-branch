@@ -2,6 +2,7 @@
 # Remove git branches locally
 
 Script to add as alias for cleaning up local branches. It is customizable if users prefers to do so.
+By default script uses -d, which will not delete branches if it has unmerged changes.
 
 ## Setup
 ### Clone repository
@@ -27,7 +28,7 @@ Script to add as alias for cleaning up local branches. It is customizable if use
 - "-e (--exclude)" - Branches to avoid deleting.
 - "-h (--help)" - Available flags.
 - "-c (--check)" Print branches that will be deleted. But **DOES NOT** delete them.
-<!-- - "-f (--force)" Force delete (-D) the specified branch, even if it has unmerged changes. By default command uses -d, which do not delete branches if it has unmerged changes -->
+- "-f (--force)" Force delete (-D) the specified branch, even if it has unmerged changes.
 
 ## Usage/Examples
 Branches that are always excluded from deleting are  **master**, **main**, and **current branch**.
@@ -65,6 +66,13 @@ Before running a script for clean up, use check flag to see what branches are go
 
 ```zsh
 remove-git-branch --exclude=branch1 --all --check
+```
+### Force (-f | --force) example
+Force delete branch1 and branch2, even if it has unmerged changes
+
+
+```zsh
+remove-git-branch -f --branch=branch1,branch2
 ```
 
 ## License

@@ -1,3 +1,6 @@
+# 1.1.0 (20. July. 2021)
+- Add flag -f (--force) force remove branch even if it has unmerged changes
+
 # 1.0.0 (19. July. 2021)
 - Add flag -b (--branch) to remove branches as they are
 - Add flag -p (--pattern) to remove branches that match pattern

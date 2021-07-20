@@ -7,6 +7,7 @@ EXCLUDE=""
 PATTERN=""
 DELETE=""
 CHECK=""
+FORCE=""
 
 for i in "$@"; do
   case $i in
@@ -30,6 +31,10 @@ for i in "$@"; do
       CHECK="true"
       shift # past argument=value
       ;;
+    -f|--force)
+      FORCE="true"
+      shift # past argument=value
+      ;;
     -h|--help)
     echo "usage: remove-git-branch  [-b=<pattern> | --branch=<pattern>] [-p=<pattern> | --pattern=<pattern>]
                 [-a | --all] [-h | --help]"
@@ -38,6 +43,7 @@ for i in "$@"; do
       echo "-a (--all) - Remove all branches, expect master, **main, and current."
       echo "-e (--exclude) - Branches to exclude from deleting."
       echo "-c (--check) Print branches that will be deleted. But DOES NOT delete them."
+      echo "-f (--force) Force delete branches, even if it has unmerged changes."
       echo "-h (--help) - Available flags."
       exit 1;
       ;;
@@ -78,11 +84,10 @@ if [[ $ALL ]]; then
 fi
 
 if [[ $CHECK ]]; then
-  echo "EXCLUDE - $EXCLUDE";
-  echo "DELETE - $DELETE";
   git branch | awk '{gsub(/^[ \t]+| [ \t]+$/,""); print $0 }' | egrep -v "$EXCLUDE" | egrep "$DELETE"
+elif [[ $FORCE ]]; then
+  git branch | awk '{gsub(/^[ \t]+| [ \t]+$/,""); print $0 }' | egrep -v "$EXCLUDE" | egrep "$DELETE" | xargs git branch -D
 else
-  # git branch | egrep -v "$DEFAULT" | awk '{gsub(/^[ \t]+| [ \t]+$/,""); print $0 }' | egrep "$REGEX" | xargs git branch -d
   git branch | awk '{gsub(/^[ \t]+| [ \t]+$/,""); print $0 }' | egrep -v "$EXCLUDE" | egrep "$DELETE" | xargs git branch -d
 fi
 
