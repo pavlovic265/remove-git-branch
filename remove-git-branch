@@ -35,13 +35,19 @@ for i in "$@"; do
       FORCE="true"
       shift # past argument=value
       ;;
+    -m|--merged-only)
+      BRANCHES=$(git fetch -p && git branch -v | fgrep '[gone]' | awk '{print $1}' | tr "\n" "," | sed 's/,$/\n/')
+      shift # past argument=value
+      ;;
     -h|--help)
     echo "usage: remove-git-branch  [-b=<pattern> | --branch=<pattern>] [-p=<pattern> | --pattern=<pattern>]
-                [-a | --all] [-h | --help]"
+                [-e | --exclude] [-a | --all] [-m | --merged-only] [-c | --check] [-f | --force] [-h | --help]"
       echo "-b (--branch) - Branches to remove separated by ','. It has priority over pattern."
       echo "-p (--pattern) - Regex pattern to define witch branches should be removed."
-      echo "-a (--all) - Remove all branches, expect master, **main, and current."
       echo "-e (--exclude) - Branches to exclude from deleting."
+      echo "-a (--all) - Remove all branches, expect master, main, and current."
+      echo "-m (--merged-only) - Branches that are already merged and deleted at origin."
+      echo "                     Please note, that it will run git fetch --prune as well."
       echo "-c (--check) Print branches that will be deleted. But DOES NOT delete them."
       echo "-f (--force) Force delete branches, even if it has unmerged changes."
       echo "-h (--help) - Available flags."
