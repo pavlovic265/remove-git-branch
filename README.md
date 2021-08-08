@@ -1,23 +1,28 @@
 
 # Remove git branches locally
 
-Script to add as alias for cleaning up local branches. It is customizable if users prefers to do so.
-By default script uses -d, which will not delete branches if it has unmerged changes.
+Script for cleaning up local git branches. See [Features](#features) for all the available options.
+By default script uses `git branch -d` which will not delete branches with unmerged changes.
 
 ## Setup
 ### Clone repository
   - Clone repository
-  - Open .zsh or .bash_profile or other.
-  - Add `alias remove-git-branch=[ABSOLUTE_PATH_TO_REPOSITORY]/remove-git-branch.sh`
-  - Restart terminal
 
+  - Create a symbolic link in one of your folders that are mentioned in `$PATH` environment variable, e.g.  
 
-### Copy Script
-- Create file `remove-git-branch.sh`
-- chmod +x [ABSOLUTE_PATH_TO_THE_FILE]/remove-git-branch.sh
-- Open .zsh or .bash_profile or other.
-- Add alias=[ABSOLUTE_PATH_TO_THE_FILE]/remove-git-branch.sh
-- Restart terminal
+    ````bash
+    ln -sf [ABSOLUTE_PATH_TO_REPOSITORY]/remove-git-branch /usr/local/bin/remove-git-branch 
+    exec $SHELL
+    ````
+
+###  Copy Script
+
+- Download the file into one of your folders that are mentioned in `$PATH` and make it executable, e.g.
+
+  ``````bash
+  curl https://raw.githubusercontent.com/pavlovic265/remove-git-branch/main/remove-git-branch -o 
+  chmod +x /usr/local/bin/remove-git-branch
+  ``````
 
 
 ## Features
