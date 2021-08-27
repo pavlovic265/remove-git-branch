@@ -34,6 +34,7 @@ By default script uses `git branch -d` which will not delete branches with unmer
 - "-h (--help)" - Available flags.
 - "-c (--check)" Print branches that will be deleted. But **DOES NOT** delete them.
 - "-f (--force)" Force delete (-D) the specified branch, even if it has unmerged changes.
+- "-m (--merged-only)" Branches that are already merged and deleted at origin. **Please note**, that it will run `git fetch --prune` as well.
 
 ## Usage/Examples
 Branches that are always excluded from deleting are  **master**, **main**, and **current branch**.
@@ -78,6 +79,14 @@ Force delete branch1 and branch2, even if it has unmerged changes
 
 ```zsh
 remove-git-branch -f --branch=branch1,branch2
+```
+
+### Merged only (-m | --merged-only) example
+Delete branches that are merged and deleted at origin
+
+
+```zsh
+remove-git-branch -m
 ```
 
 ## License
