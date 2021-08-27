@@ -1,3 +1,6 @@
+# 1.2.0 (08. August. 2021)
+- Add flag -m (--merged-only) remove branches that are already merged and deleted at origin.
+
 # 1.1.0 (20. July. 2021)
 - Add flag -f (--force) force remove branch even if it has unmerged changes
 
