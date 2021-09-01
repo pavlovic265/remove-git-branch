@@ -20,7 +20,7 @@ By default script uses `git branch -d` which will not delete branches with unmer
 - Download the file into one of your folders that are mentioned in `$PATH` and make it executable, e.g.
 
   ``````bash
-  curl https://raw.githubusercontent.com/pavlovic265/remove-git-branch/main/remove-git-branch -o 
+  curl https://raw.githubusercontent.com/pavlovic265/remove-git-branch/main/remove-git-branch -o /usr/local/bin/remove-git-branch
   chmod +x /usr/local/bin/remove-git-branch
   ``````
 
